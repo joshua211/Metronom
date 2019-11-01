@@ -7,13 +7,13 @@ class Slider extends Component {
   }
   render() {
     return (
-      <div class="slidecontainer">
+      <div className="slidecontainer">
         <input
           type="range"
           min="1"
-          max="100"
+          max="10"
           value={this.state.value}
-          class="slider"
+          className="slider"
           id="intervalRange"
           onChange={this.handleChange}
         />
