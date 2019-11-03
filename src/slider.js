@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class Slider extends Component {
   constructor(props) {
     super(props);
-    this.state = { value : 50};
+    this.state = { value : 1};
   }
   render() {
     return (
