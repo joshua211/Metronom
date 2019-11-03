@@ -1,5 +1,18 @@
 .animatedBox {
-    background-color: indigo;
-    width: 50px;
-    height: 50px;
+    background-color: #ff9800;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%; 
+}
+
+.boxContainer {
+    margin: 20px auto 20px auto;
+    width: 120px;
+    height: 20px;
+    background-color: #d3d3d3;
+}
+
+.metronom {
+    width: 50%;
+    text-align: center;
 }

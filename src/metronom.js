@@ -15,12 +15,13 @@ class Metronom extends Component {
     }
     render() { 
         return (  
-        <div>
-            {this.state.interval}
-            {this.state.shouldRun ? "Running" : "Paused"}
+        <div className="container metronom flex">
+            <span className="badge badge-primary"> {this.state.interval} </span>
             <Slider handleValueChange={this.handleValueChange}/>
-            <input type="button" value={this.state.shouldRun ? "Stop" : "Start"} onClick={this.handleClick}/>
-            <div className="animatedBox" ref={this.animatedBox}></div>
+            <div className="boxContainer">
+                <div className="animatedBox" ref={this.animatedBox}></div>
+            </div>
+            <input className="btn btn-primary" type="button" value={this.state.shouldRun ? "Stop" : "Start"} onClick={this.handleClick}/>            
         </div>
         );
     }
@@ -40,7 +41,7 @@ class Metronom extends Component {
         var vel = this.state.right ? this.VEL_X : -this.VEL_X;
         this.animatedBox.current.style.transform = `translateX(${this.state.value + vel}px)`
         this.setState((prev, props) => ({value : prev.value + vel}));
-        
+
         if(this.state.value > 100 || this.state.value < 0) {
             this.setState((prev, props) => ({right : !prev.right}))
             sound.play();
