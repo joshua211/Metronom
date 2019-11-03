@@ -8,7 +8,7 @@ class Slider extends Component {
   }
   render() {
     return (
-      <div className="slidecontainer">
+      <div className="slideContainer">
         <input
           type="range"
           min="10"

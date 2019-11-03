@@ -15,7 +15,7 @@ class Metronom extends Component {
     }
     render() { 
         return (  
-        <div className="container metronom flex">
+        <div className="container metronom">
             <span className="badge badge-primary"> {this.state.bpm} </span>
             <Slider handleValueChange={this.handleValueChange}/>
             <div className="boxContainer">
