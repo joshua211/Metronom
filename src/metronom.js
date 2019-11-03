@@ -1,6 +1,10 @@
 import React, { Component } from 'react';
 import Slider from './slider';
+import UIfx from 'uifx'
+import metronomSound from './assets/metronom_sound.mp3'
 import './metronom.css';
+
+const sound = new UIfx(metronomSound);
 
 class Metronom extends Component {
     constructor(props) {
@@ -36,19 +40,16 @@ class Metronom extends Component {
         var vel = this.state.right ? this.VEL_X : -this.VEL_X;
         this.animatedBox.current.style.transform = `translateX(${this.state.value + vel}px)`
         this.setState((prev, props) => ({value : prev.value + vel}));
-        if(this.state.value >= 100 || this.state.value <= 0) {
+        
+        if(this.state.value > 100 || this.state.value < 0) {
             this.setState((prev, props) => ({right : !prev.right}))
+            sound.play();
         }
 
         if(this.state.shouldRun)
             setTimeout(this.moveBox, interval);
 
     }
-
-    timerCallback = () => {
-        if(this.state.shouldRun)
-            this.startTimer();
-    }
 }
- 
 export default Metronom;
+
