@@ -4,15 +4,15 @@ import './slider.css'
 class Slider extends Component {
   constructor(props) {
     super(props);
-    this.state = { value : 1};
+    this.state = { value : 10};
   }
   render() {
     return (
       <div className="slidecontainer">
         <input
           type="range"
-          min="1"
-          max="10"
+          min="10"
+          max="60"
           value={this.state.value}
           className="slider"
           id="intervalRange"

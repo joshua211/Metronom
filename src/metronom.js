@@ -9,14 +9,14 @@ const sound = new UIfx(metronomSound);
 class Metronom extends Component {
     constructor(props) {
         super(props);
-        this.state = { shouldRun : false, interval : 1, value : 0, right : true  }
+        this.state = { shouldRun : false, bpm : 10, value : 0, right : true  }
         this.animatedBox = React.createRef();
         this.VEL_X = 1;
     }
     render() { 
         return (  
         <div className="container metronom flex">
-            <span className="badge badge-primary"> {this.state.interval} </span>
+            <span className="badge badge-primary"> {this.state.bpm} </span>
             <Slider handleValueChange={this.handleValueChange}/>
             <div className="boxContainer">
                 <div className="animatedBox" ref={this.animatedBox}></div>
@@ -28,7 +28,7 @@ class Metronom extends Component {
 
 
     handleValueChange = (event) => {
-        this.setState({interval : event.target.value})
+        this.setState({bpm : event.target.value})
     }
 
     handleClick = () => {
@@ -37,12 +37,12 @@ class Metronom extends Component {
     }
 
     moveBox = () => {
-        var interval = (this.state.interval * 10 / this.VEL_X);
+        var interval = (60 / this.state.bpm) * 10;
         var vel = this.state.right ? this.VEL_X : -this.VEL_X;
         this.animatedBox.current.style.transform = `translateX(${this.state.value + vel}px)`
         this.setState((prev, props) => ({value : prev.value + vel}));
 
-        if(this.state.value > 100 || this.state.value < 0) {
+        if(this.state.value + vel >= 100 || this.state.value + vel <= 0) {
             this.setState((prev, props) => ({right : !prev.right}))
             sound.play();
         }
